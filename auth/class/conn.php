@@ -1,4 +1,4 @@
 <?php
-mysqli_connect('localhost','root','12012','class')or die(mysqli_error());
+mysqli_connect('localhost','root','12012','equity_crm')or die(mysqli_error());
 
 ?>

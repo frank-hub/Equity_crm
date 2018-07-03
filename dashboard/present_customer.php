@@ -113,32 +113,45 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Full Name</th>
                     <th>Email</th>
-                    <th>Account No.</th>
-                    <th>Status</th>
+                    <th>Phone No.</th>
+                    <th>Location</th>
+                    <th>National ID.</th>
                 </tr>
             </thead>
             <tbody>
+                <?php 
+                include '../auth/conn.php';
+                $cust_qry = "SELECT * FROM `customer`";
+                $exec_cust = mysqli_query($conn,$cust_qry);
+                while ($results = mysqli_fetch_array($exec_cust)) { ?>
                 <tr>
-                    <td>Frankline Kelvin</td>
-                    <td>frank@gmail.com</td>
-                    <td>#2505626</td>
-                    <td>Active</td>
+                <td><?php echo $results['fname'] ?></td>
+                <td><?php echo $results['email'] ?></td>
+                <td><?php echo $results['phone'] ?></td>
+                <td><?php echo $results['location'] ?></td>
+                <td><?php echo $results['national_id'] ?></td>
                 </tr>
-                <tr>
-                    <td>Marvin Kibiru</td>
-                    <td>kibiru@gmail.com</td>
-                    <td>#2505627</td>
-                    <td>Inactive</td>
-                </tr>
+                <?php
+                }
+                ?>
             </tbody>
+            <tfoot>
+            <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone No.</th>
+                    <th>Location</th>
+                    <th>National ID.</th>
+                </tr>
+            </tfoot>
         </table>
     </main>
     <!--Main layout-->
 
     <!--Footer-->
-    <footer class="page-footer text-center font-small warning-color darken-2 mt-4 wow fadeIn fixed-bottom">
+    <footer class="page-footer text-center font-small warning-color darken-2 mt-4 wow fadeIn">
 
         <!--Call to action-->
         <div class="pt-4 warning-color-dark" >

@@ -110,13 +110,44 @@
 
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
-        <form action="">
+    <?php
+
+if (isset($_POST['reg_btn'])){
+    register();
+}
+
+function register(){
+    include '../auth/conn.php';
+    $fname = $_POST['full_name'];
+    $national_id    =$_POST ['id'];
+    $email =$_POST ['email'];
+    $location=$_POST ['location'];
+    $password =$_POST ['password'];
+    $image=$_POST['image'];
+
+    $password=md5($password);
+    
+    $qry = "INSERT INTO `customer`(`fname`, `email`, `password`, `image`, `location`, `national_id`) 
+    VALUES ('$fname','$email','$password','$image','$location','$national_id')";
+    $exec = mysqli_query($conn,$qry)or die(mysqli_error($conn));
+    if($exec){
+        ?>
+       <div class="" role="alert">
+       <button class="btn btn-success" data-dismiss="alert" aria-label="close">The Customer :<?php echo $fname ?> Is registered
+        <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+        <?php
+    }
+}
+?>
+        <form method="post">
        <div class="row" style="margin-top: 50px">
            <div class="col-md-4">
                <img src="../img/crm/home/avatar.png" alt="" class="img-thumbnail">
                <br>
                <hr>
-               <input type="file" name="" id="userImage">
+               <input type="file" name="image" id="userImage">
            </div>
                <div class="col-md-6">
                    
@@ -126,46 +157,47 @@
                     <!-- Material input text -->
                     <div class="md-form">
                         <i class="fa fa-user prefix grey-text"></i>
-                        <input type="text" id="materialFormRegisterNameEx" class="form-control">
+                        <input type="text" id="materialFormRegisterNameEx" name="full_name"  class="form-control">
                         <label for="materialFormRegisterNameEx">Your name</label>
                     </div>
                 
                 <!-- Material input id -->
                     <div class="md-form">
                         <i class="fa fa-id-card prefix grey-text"></i>
-                        <input type="text" id="id" class="form-control" required>
+                        <input type="text" id="id" name="id" class="form-control" required>
                         <label for="id">Your National ID.</label>
                     </div>
 
                     <!-- Material input email -->
                     <div class="md-form">
                         <i class="fa fa-envelope prefix grey-text"></i>
-                        <input type="email" id="materialFormRegisterEmailEx" class="form-control" required>
+                        <input type="email" id="materialFormRegisterEmailEx"name="email" class="form-control" required>
                         <label for="materialFormRegisterEmailEx">Your email</label>
                     </div>
                 
-                    <!-- Material input email -->
+                    <!-- Material input location -->
                     <div class="md-form">
                         <i class="fa fa-exclamation-triangle prefix grey-text"></i>
-                        <input type="email" id="materialFormRegisterConfirmEx" class="form-control" required>
-                        <label for="materialFormRegisterConfirmEx">Confirm your email</label>
+                        <input type="text" id="materialFormRegisterConfirmEx" name="location"class="form-control" required>
+                        <label for="materialFormRegisterConfirmEx">location</label>
                     </div>
                 
                     <!-- Material input password -->
                     <div class="md-form">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="materialFormRegisterPasswordEx" class="form-control" required>
+                        <input type="password" id="materialFormRegisterPasswordEx" name="password" class="form-control" required>
                         <label for="materialFormRegisterPasswordEx">Your password</label>
                     </div>
                 
                     <div class="text-center mt-4">
-                        <button class="btn btn-primary" type="submit">Register</button>
+                        <button class="btn btn-primary" type="submit" name="reg_btn">Register</button>
                     </div>
                 
                 <!-- Material form register -->
                </div>
        </div>
        </form>
+       
     </main>
     <!--Main layout-->
 

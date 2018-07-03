@@ -26,18 +26,18 @@
                 <strong> EQUITY MERU CRM</strong>
             </div>
             <div class="card-body">
-                <form action="class/auth.php" method="post">
+                <form action="auth.php" method="post">
                     <div class="form-group">
                         <label for="pos">Your Position</label>
-                        <select name="position" id="pos" class="form-control">
+                        <select name="position" class="form-control">
                             <option value="" selected>Position :</option>
-                            <option value="">Staff</option>
-                            <option value="">Customer</option>
+                            <option>customer</option>
+                            <option>staff</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="uname">Username</label>
-                        <input type="text" name="username" id="uname" class="form-control">
+                        <label for="uname">Email</label>
+                        <input type="text" name="emails" id="uname" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="pass">Password</label>
@@ -46,7 +46,7 @@
                     <hr>
                     <div>
                         <button type="reset" class="btn btn-outline-danger float-left">Reset</button>
-                        <button type="submit" class="btn btn-outline-danger float-right">Login</button>
+                        <button type="submit" name="btn_login" class="btn btn-outline-danger float-right">Login</button>
                     </div>
                 </form>
             </div>
