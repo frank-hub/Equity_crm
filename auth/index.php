@@ -30,18 +30,18 @@
                     <div class="form-group">
                         <label for="pos">Your Position</label>
                         <select name="position" class="form-control">
-                            <option value="" selected>Position :</option>
+                            <option value="" selected disabled>Position :</option>
                             <option>customer</option>
                             <option>staff</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="uname">Email</label>
-                        <input type="text" name="emails" id="uname" class="form-control">
+                        <input type="email" name="emails" id="uname" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="pass">Password</label>
-                        <input type="password" name="passd" id="pass" class="form-control">
+                        <input type="password" name="passd" id="pass" class="form-control" required>
                     </div>
                     <hr>
                     <div>
@@ -49,7 +49,9 @@
                         <button type="submit" name="btn_login" class="btn btn-outline-danger float-right">Login</button>
                     </div>
                 </form>
+                
             </div>
+            <a href="forgotpass.php" class="text-center">Need help with your password ?</a>
         </div>
     </div>
 </body>

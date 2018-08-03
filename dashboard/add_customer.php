@@ -28,33 +28,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link waves-effect" href="../" target="_blank">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-                        </li>
-                    </ul>
-
-                    <!-- Right -->
-                    
-
-                </div>
+                </button>  
                 <div class="light-font">
                     <ol class="breadcrumb warning-color-dark">
                         <li class="breadcrumb-item">
@@ -82,21 +56,21 @@
 
                 <!-- Split button -->
                 <div class="btn-group warning-color-dark active">
-                    <button type="button" class="btn btn-warning"><i class="fa fa-user mr-3"></i>Customer</button>
+                    <button type="button" class="btn btn-warning"><i class="fa fa-users mr-3"></i>Customer</button>
                     <button type="button" class="btn btn-warning dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="add_customer.php">New Customer</a>
+                        <a class="dropdown-item" href="add_customer.php">Create Account</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="present_customer.php">Present Customer</a>
                     </div>
                 </div>
                
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fa fa-table mr-3"></i>Tables</a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fa fa-map mr-3"></i>Maps</a>
+                <a href="staff.php" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-users mr-3"></i>Staff</a>
+                <a href="" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-map mr-3"></i>Messaging</a>
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fa fa-money mr-3"></i>Orders</a>
                     
@@ -117,34 +91,50 @@ if (isset($_POST['reg_btn'])){
 }
 
 function register(){
-    include '../auth/conn.php';
-    $fname = $_POST['full_name'];
-    $national_id    =$_POST ['id'];
-    $email =$_POST ['email'];
-    $location=$_POST ['location'];
-    $password =$_POST ['password'];
-    $image=$_POST['image'];
 
-    $password=md5($password);
-    
-    $qry = "INSERT INTO `customer`(`fname`, `email`, `password`, `image`, `location`, `national_id`) 
-    VALUES ('$fname','$email','$password','$image','$location','$national_id')";
-    $exec = mysqli_query($conn,$qry)or die(mysqli_error($conn));
-    if($exec){
-        ?>
-       <div class="" role="alert">
-       <button class="btn btn-success" data-dismiss="alert" aria-label="close">The Customer :<?php echo $fname ?> Is registered
-        <span aria-hidden="true">&times;</span>
-        </button>
-       </div>
-        <?php
-    }
+            if (isset($_FILES['image'])) 
+             {  
+               $names = $_FILES['image']['name'];
+               $sizes = $_FILES['image']['size'];
+               $types = $_FILES['image']['type'];
+               $tmp = $_FILES['image']['tmp_name'];
+               $folder_location = 'uploads/'.$_FILES['image']['name'];
+               $move = move_uploaded_file($tmp,$folder_location);
+                
+            if ($move) {
+                include '../auth/class/conn.php';
+                $fname = $_POST['full_name'];
+                $national_id    =$_POST ['id'];
+                $email =$_POST ['email'];
+                $location=$_POST ['location'];
+                $password =$_POST ['password'];
+                
+
+                $password=md5($password);
+                
+                $qry = "INSERT INTO `customer`(`fname`, `email`, `password`, `image`, `location`, `national_id`) 
+                VALUES ('$fname','$email','$password','$names','$location','$national_id')";
+                $exec = mysqli_query($conn,$qry)or die(mysqli_error($conn));
+                if($exec){
+                    ?>
+                <div class="" role="alert">
+                <button class="btn btn-success" data-dismiss="alert" aria-label="close">The Customer :<?php echo $fname ?> Is registered
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                    <?php
+                }
+                }
+                else {
+                    echo '<h1>Error </h1>';
+                }
+            }
 }
 ?>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data" >
        <div class="row" style="margin-top: 50px">
            <div class="col-md-4">
-               <img src="../img/crm/home/avatar.png" alt="" class="img-thumbnail">
+               <img src="../img/crm/home/avatar.png" alt="" class="img-thumbnail" required>
                <br>
                <hr>
                <input type="file" name="image" id="userImage">
@@ -152,7 +142,7 @@ function register(){
                <div class="col-md-6">
                    
                 <!-- Material form register -->
-                    <p class="h4 text-center mb-4">Sign up</p>
+                    <p class="h4 text-center mb-4"> Account Sign up</p>
                 
                     <!-- Material input text -->
                     <div class="md-form">
@@ -166,6 +156,13 @@ function register(){
                         <i class="fa fa-id-card prefix grey-text"></i>
                         <input type="text" id="id" name="id" class="form-control" required>
                         <label for="id">Your National ID.</label>
+                    </div>
+
+                    <!-- Phone number -->
+                    <div class="md-form">
+                        <i class="fa fa-phone prefix grey-text"></i>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                        <label for="id">Your Phone No.</label>
                     </div>
 
                     <!-- Material input email -->

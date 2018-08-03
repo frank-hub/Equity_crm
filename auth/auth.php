@@ -4,7 +4,7 @@ if(isset($_POST['btn_login'])){
 }
 
 function login(){
-    include 'conn.php';
+    include 'class/conn.php';
    $pos =  $_POST['position'];
    $mail = $_POST['emails'];
    $passwd = $_POST['passd'];
@@ -19,6 +19,16 @@ function login(){
         $_SESSION['status'] = true ;
         $_SESSION['full_name'] =  $user_logged_in['fname'];
         $_SESSION['user_id'] = $user_logged_in['id'];
+        
+        // (`id`, `fname`, `email`, `phone`, `password`, `image`, `location`, `national_id`
+        $_SESSION['mail'] = $user_logged_in['email'];
+        $_SESSION['phone'] = $user_logged_in['phone'];
+        $_SESSION['image'] = $user_logged_in['image'];
+        $_SESSION['location'] = $user_logged_in['location'];
+        $_SESSION['nat_id'] = $user_logged_in['national_id'];
+
+        
+
        if($pos == "staff"){
         header("Location:../dashboard/dashboard.php");
        }

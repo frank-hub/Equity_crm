@@ -122,7 +122,7 @@
             </thead>
             <tbody>
                 <?php 
-                include '../auth/conn.php';
+                include '../auth/class/conn.php';
                 $cust_qry = "SELECT * FROM `customer`";
                 $exec_cust = mysqli_query($conn,$cust_qry);
                 while ($results = mysqli_fetch_array($exec_cust)) { ?>

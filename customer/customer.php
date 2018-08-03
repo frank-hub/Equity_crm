@@ -13,194 +13,25 @@
         <link href="../css/mdb.min.css" rel="stylesheet">
         
         <link href="../css/style.css" rel="stylesheet">
+        <link href="customer.css" rel="stylesheet">
     </head>
-    <style>
-        body{
-            background-color: #F1 F1F1;
-        }
-        @charset "utf-8";
-/* CSS Document */
-
-/* ---------- GENERAL ---------- */
-
-body {
-	background: #e9e9e9;
-	color: #9a9a9a;
-	font: 100%/1.5em "Droid Sans", sans-serif;
-	margin: 0;
-}
-
-a { text-decoration: none; }
-
-fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
-}
-
-h4, h5 {
-	line-height: 1.5em;
-	margin: 0;
-}
-
-hr {
-	background: #e9e9e9;
-    border: 0;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 1px;
-    margin: 0;
-    min-height: 1px;
-}
-
-img {
-    border: 0;
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
-
-input {
-	border: 0;
-	color: inherit;
-    font-family: inherit;
-    font-size: 100%;
-    line-height: normal;
-    margin: 0;
-}
-
-p { margin: 0; }
-
-.clearfix { *zoom: 1; } /* For IE 6/7 */
-.clearfix:before, .clearfix:after {
-    content: "";
-    display: table;
-}
-.clearfix:after { clear: both; }
-
-/* ---------- LIVE-CHAT ---------- */
-
-#live-chat {
-	/* bottom: 0;
-	font-size: 12px;
-	right: 24px;
-	position: fixed;
-	width: 300px; */
-}
-
-#live-chat header {
-	background: #293239;
-	border-radius: 5px 5px 0 0;
-	color: #fff;
-	cursor: pointer;
-	padding: 16px 24px;
-}
-
-#live-chat h4:before {
-	background: #1a8a34;
-	border-radius: 50%;
-	content: "";
-	display: inline-block;
-	height: 8px;
-	margin: 0 8px 0 0;
-	width: 8px;
-}
-
-#live-chat h4 {
-	font-size: 12px;
-}
-
-#live-chat h5 {
-	font-size: 10px;
-}
-
-#live-chat form {
-	padding: 24px;
-}
-
-#live-chat input[type="text"] {
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	padding: 8px;
-	outline: none;
-	
-    height: 50px;
-}
-
-.chat-message-counter {
-	background: #e62727;
-	border: 1px solid #fff;
-	border-radius: 50%;
-	display: none;
-	font-size: 12px;
-	font-weight: bold;
-	height: 28px;
-	left: 0;
-	line-height: 28px;
-	margin: -15px 0 0 -15px;
-	position: absolute;
-	text-align: center;
-	top: 0;
-	width: 28px;
-}
-
-.chat-close {
-	background: #1b2126;
-	border-radius: 50%;
-	color: #fff;
-	display: block;
-	float: right;
-	font-size: 10px;
-	height: 16px;
-	line-height: 16px;
-	margin: 2px 0 0 0;
-	text-align: center;
-	width: 16px;
-}
-
-.chat {
-	background: #fff;
-}
-
-.chat-history {
-	height: 252px;
-	padding: 8px 24px;
-	overflow-y: scroll;
-}
-
-.chat-message {
-	margin: 16px 0;
-}
-
-.chat-message img {
-	border-radius: 50%;
-	float: left;
-}
-
-.chat-message-content {
-	margin-left: 56px;
-}
-
-.chat-time {
-	float: right;
-	font-size: 10px;
-}
-
-.chat-feedback {
-	font-style: italic;	
-	margin: 0 0 0 80px;
-}
-    </style>
+    
     <body>
     <?php 
     session_start();
    if ($_SESSION['status'] == true) {
       $fullName = $_SESSION['full_name'];
+       $email =  $_SESSION['mail'] ;
+       $mobile = $_SESSION['phone'];
+       $img =  $_SESSION['image'] ;
+    $locatioin = $_SESSION['location'];
+        $_SESSION['nat_id'] ;
+
+
    }
    else {
        header("Location:../auth/");
    }
-    
     ?>
     <div class="container">
 
@@ -224,7 +55,7 @@ p { margin: 0; }
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                    <img src="../img/crm/home/avatar.png" alt="" class="img-thumbnail">
+                    <img src="../dashboard/uploads/<?php echo $img ?>" alt="" class="img-thumbnail">
                     </div>
                     <div class="col-md-6">
                     <p class"text-muted">
@@ -235,24 +66,42 @@ p { margin: 0; }
                 </div>
                 <form method="post" action="">
                     <div class="md-form ">
-                        <input type="text" id="full_name" name="fname" class="form-control" placeholder="<?php echo  $fullName ?>">
+                        <input type="text" id="full_name" name="fname" required class="form-control" placeholder="Name : <?php echo  $fullName ?>">
                     </div>
                     <div class="md-form">
-                        <input type="text" name="fname" class="form-control" placeholder="Mobile No.">
+                        <input type="email" name="email" class="form-control" required placeholder="Email :<?php echo  $email ?>">
                     </div>
                     <div class="md-form">
-                        <input type="text" name="fname" class="form-control" placeholder="Email Add.">
+                        <input type="text" name="mobile" class="form-control" required  placeholder="Phone :<?php echo  $mobile ?>">
+                    </div>
+                    
+                    <div class="md-form">
+                        <input type="text" name="loc" class="form-control" required placeholder="Address : <?php echo  $locatioin ?>">
                     </div>
                     <div class="md-form">
-                        <input type="text" name="fname" class="form-control" placeholder="Location.">
-                    </div>
-                    <div class="md-form">
-                        <input type="text" name="fname" class="form-control" placeholder="Password">
+                        <input type="text" name="oldPass" class="form-control" required placeholder="Old Password">
                     </div>
                     <div class="">
-                        <button class="btn btn-block btn-outline btn-orange">UPDATE INFORMATION</button>
+                        <button class="btn btn-block btn-outline btn-orange" name="update">UPDATE INFORMATION</button>
                     </div>
                 </form>
+                <?php 
+                if (isset($_POST['update'])) {
+                    updating();
+                }
+               function updating(){
+
+                include '../auth/class/conn.php';
+                $fname = $_POST['fname'];
+                $email = $_POST['email'];
+                $mobile = $_POST['mobile'];
+                $loc = $_POST['loc'];
+                $oldPass = $_POST['oldPass'];
+                $update = "UPDATE `customer` SET `fname`='$fname',`email`='$email',`phone`='$mobile',`location`='$loc' WHERE password = '$oldPass'";
+                $exc_update = mysqli_query($conn,$update);
+
+               }
+                ?>
             </div>
         </div>
     </div>
@@ -273,13 +122,13 @@ p { margin: 0; }
         <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Transactions</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Contact</a>
+        <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">AgencyBanking</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Follow</a>
+        <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Money Transfers</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Contact</a>
+        <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Our Cards</a>
     </li>
 </ul>
     <hr style="margin-top:5px;margin-bottom:5px;">
@@ -319,9 +168,7 @@ p { margin: 0; }
 					</div> <!-- end chat-message-content -->
 
 				</div> <!-- end chat-message -->
-
 				<hr>
-
 				<div class="chat-message clearfix">
 					
 					<img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32">
@@ -335,33 +182,50 @@ p { margin: 0; }
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
 
 					</div> <!-- end chat-message-content -->
-
 				</div> <!-- end chat-message -->
 				<hr>
-
 			</div> <!-- end chat-history -->
-
 			<p class="chat-feedback">Your partner is typing…</p>
 
-			<form action="#" method="post">
+			<form method="post">
                 <div class="form-group">
-                    <select name="services" id="" class="form-control">
-                        <option value="" selected>--Inquiry On--</option>
-                        <option value="">Deposit</option>
-                        <option value="">Withdrawal</option>
-                        <option value="">Deposit</option>
-                        <option value="">Loan</option>
-                        <option value="">Other</option>
+                    <select name="services" class="form-control">
+                        <option value="disabled" selected disabled>--Inquiry On--</option>
+                        <option value="Deposit">Deposit</option>
+                        <option value="Withdrawal">Withdrawal</option>
+                        <option value="Loan">Loan</option>
+                        <option value="others">Other</option>
                     </select>
                 </div>
 				<div class="form-group">
-<fieldset>
-					<input type="text" placeholder="Type your message…" autofocus class="form-control">
-					<input type="hidden">
-				</fieldset>
+                <fieldset>
+					<input type="text" placeholder="Type your message…" autofocus name="message" class="form-control">
+                </fieldset>
                 </div>
 
-			</form>
+            </form>
+            <?php
+            
+            if(isset( $_POST['message'])){
+                include '../auth/class/conn.php';
+                $receiver = "Biedermann";
+                $sender = $fullName ;
+                $subject = $_POST['services'];
+                $text = $_POST['message'];
+                $date = date('d/m/y');
+                $userid = $_SESSION['nat_id'] ;
+
+                $send = "INSERT INTO `message`(`receiver`, `sender`, `subject`, `text`, `senddate`, `userid`) VALUES 
+                ('$receiver','$sender','$subject','$text','$date','$userid')";
+                $exc = mysqli_query($conn,$send);
+                if ($exc) {?>
+                         <button class="btn btn-success">OK</button>
+                    <?php
+                }
+            }
+           
+// INSERT INTO `message`(`receiver`, `sender`, `subject`, `text`, `senddate`, `userid`) VALUES 
+            ?>
 
 		</div> <!-- end chat -->
 
@@ -372,7 +236,7 @@ p { margin: 0; }
     <!--Panel 2-->
     <div class="tab-pane fade" id="panel2" role="tabpanel">
         <div>
-            <button class="btn btn-sm btn-orange">Print PDF</button>
+            <a href="gen_pdf.php" class="btn btn-sm btn-orange" target="_blank">Print PDF</a>
         </div>
         <br>
         <table class="table table-sm table-striped table-hover">
@@ -412,9 +276,15 @@ p { margin: 0; }
     <!--Panel 3-->
     <div class="tab-pane fade" id="panel3" role="tabpanel">
         <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-            porro voluptate odit minima.</p>
+        <p>Equity Agency Banking enables you to access and enjoy 
+        banking services conveniently at your door step. Through our Agency Banking
+         model, we offer you the full range of banking serices without having to visit 
+         a branch.   
+         some of this features include;
+        1. Cash Deposit through mobile proccess 
+        2. Cash Withdrawal
+        3. School fees Rent, Collection Accounts, Bills Payments
+         </p>
     </div>
     <!--/.Panel 3-->
 </div>

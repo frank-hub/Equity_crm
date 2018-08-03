@@ -29,32 +29,6 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link waves-effect" href="../" target="_blank">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-                        </li>
-                    </ul>
-
-                    <!-- Right -->
-                    
-
-                </div>
                 <div class="light-font">
                     <ol class="breadcrumb warning-color-dark">
                         <li class="breadcrumb-item">
@@ -67,15 +41,15 @@
             </div>
         </nav>
         <!-- Navbar -->
-
+<div class="">
         <!-- Sidebar -->
-        <div class="sidebar-fixed position-fixed">
+        <div class="sidebar-fixed position-fixed ">
 
             <a class="logo-wrapper waves-effect text-warning">
                     <h4 style="font-weight: bold ">EQUITY CRM</h4>
             </a>
 
-            <div class="list-group list-group-flush">
+            <div class="list-group list-group-flush ">
                 <a href="#" class="list-group-item active waves-effect warning-color-dark">
                     <i class="fa fa-pie-chart mr-3"></i>Dashboard
                 </a>
@@ -86,7 +60,7 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="add_customer.php">New Customer</a>
+                        <a class="dropdown-item" href="add_customer.php">Create Account</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="present_customer.php">Present Customer</a>
                     </div>
@@ -110,7 +84,7 @@
         <div class="container-fluid mt-5">
 
             <!--Grid row-->
-            <div class="row wow fadeIn">
+            <div class="row flex-center wow fadeIn">
 
                 <!--Grid column-->
                 <div class="col-md-9 mb-4">
@@ -131,141 +105,8 @@
                 </div>
                 <!--Grid column-->
 
-                <!--Grid column-->
-                <div class="col-md-3 mb-4">
-
-                    <!--Card-->
-                    <div class="card mb-4">
-
-                        <!-- Card header -->
-                        <div class="card-header text-center">
-                            Pie chart
-                        </div>
-
-                        <!--Card content-->
-                        <div class="card-body">
-
-                            <canvas id="pieChart"></canvas>
-
-                        </div>
-
-                    </div>
-                    <!--/.Card-->
-
-                    <!--Card-->
-                    <div class="card mb-4">
-
-                        <!--Card content-->
-                        <div class="card-body">
-
-                            <!-- List group links -->
-                            <div class="list-group list-group-flush">
-                                <a class="list-group-item list-group-item-action waves-effect">Sales
-                                    <span class="badge badge-success badge-pill pull-right">22%
-                                        <i class="fa fa-arrow-up ml-1"></i>
-                                    </span>
-                                </a>
-                                <a class="list-group-item list-group-item-action waves-effect">Traffic
-                                    <span class="badge badge-danger badge-pill pull-right">5%
-                                        <i class="fa fa-arrow-down ml-1"></i>
-                                    </span>
-                                </a>
-                                <a class="list-group-item list-group-item-action waves-effect">Orders
-                                    <span class="badge badge-primary badge-pill pull-right">14</span>
-                                </a>
-                                <a class="list-group-item list-group-item-action waves-effect">Issues
-                                    <span class="badge badge-primary badge-pill pull-right">123</span>
-                                </a>
-                                <a class="list-group-item list-group-item-action waves-effect">Messages
-                                    <span class="badge badge-primary badge-pill pull-right">8</span>
-                                </a>
-                            </div>
-                            <!-- List group links -->
-
-                        </div>
-
-                    </div>
-                    <!--/.Card-->
-
-                </div>
-                <!--Grid column-->
-
-            </div>
-            <!--Grid row-->
-
-           
-            <div class="row wow fadeIn">
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-12 mb-4">
-
-                    <!--Card-->
-                    <div class="card">
-
-                        <!-- Card header -->
-                        <div class="card-header">Line chart</div>
-
-                        <!--Card content-->
-                        <div class="card-body">
-
-                            <canvas id="lineChart"></canvas>
-
-                        </div>
-
-                    </div>
-                    <!--/.Card-->
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-
-                    <!--Card-->
-                    <div class="card">
-
-                        <!-- Card header -->
-                        <div class="card-header">Radar Chart</div>
-
-                        <!--Card content-->
-                        <div class="card-body">
-
-                            <canvas id="radarChart"></canvas>
-
-                        </div>
-
-                    </div>
-                    <!--/.Card-->
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-
-                    <!--Card-->
-                    <div class="card">
-
-                        <!-- Card header -->
-                        <div class="card-header">Doughnut Chart</div>
-
-                        <!--Card content-->
-                        <div class="card-body">
-
-                            <canvas id="doughnutChart"></canvas>
-
-                        </div>
-
-                    </div>
-                    <!--/.Card-->
-
-                </div>
-                <!--Grid column-->
-
-            </div>
-            <!--Grid row-->
-
         </div>
+        
     </main>
     <!--Main layout-->
 
@@ -321,19 +162,46 @@
         // Animations initialization
         new WOW().init();
     </script>
+<?php 
+include '../auth/class/conn.php';
+$exc = mysqli_query($conn, "SELECT COUNT(id) FROM `customer`") or die(mysqli_error($conn));
+$res = mysqli_fetch_array($exc);
 
-    <!-- Charts -->
+$depo = mysqli_query($conn, "SELECT COUNT(messageid) FROM `message` WHERE subject = 'deposit'") or die(mysqli_error($conn));
+$ex_depo = mysqli_fetch_array($depo);
+
+$with = mysqli_query($conn, "SELECT COUNT(messageid) FROM `message` WHERE subject = 'withdrawal'") or die(mysqli_error($conn));
+$ex_with = mysqli_fetch_array($with);
+
+$loan = mysqli_query($conn, "SELECT COUNT(messageid) FROM `message` WHERE subject = 'loan'") or die(mysqli_error($conn));
+$ex_loan = mysqli_fetch_array($loan);
+
+$other = mysqli_query($conn, "SELECT COUNT(messageid) FROM `message` WHERE subject = 'other'") or die(mysqli_error($conn));
+$ex_other = mysqli_fetch_array($other);
+?>
+    <!-- ChartsNotice: Undefined offset: 0 in C:\xampp\htdocs\Equity_crm\dashboard\dashboard.php on line 328 -->
     <script>
-var name = '<?php echo $name = "12"; ?>';
+var name = '<?php echo $res['0']; ?>';
+
+var depo = '<?php echo $ex_depo['0'] ?>';
+
+var withdrawal = '<?php echo $ex_with['0'] ?>';
+
+var loan = '<?php echo $ex_loan['0'] ?>';
+
+var other = '<?php echo $ex_other['0'] ?>';
+
+
+
         // Line
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["New Users", "Complaints", "Pending", "Sales", "Revenue", "Cost"],
+                labels: ["Customers", "Deposit", "Withdrawal", "Loan", "Other", "Cost"],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [name, 19, 3, 5, 2, 3],
+                    label: 'Inquiry Report',
+                    data: [name, depo,withdrawal,loan,other, 3],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
